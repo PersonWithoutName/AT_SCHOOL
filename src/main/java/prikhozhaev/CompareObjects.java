@@ -1,3 +1,5 @@
+package prikhozhaev;
+
 public class CompareObjects {
 
     /**
