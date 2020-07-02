@@ -1,22 +1,25 @@
 package prikhozhaev;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+import java.util.Arrays;
 
-public class SortTest {
+class SortTest {
 
-    public void testSort() {
-        testReverseSort();
+    static void testReverseSort(int[] arr) {
+        System.out.println("Sort.reverseSort method test: ");
+        System.out.println("Expected: " + Arrays.toString(SortTest.bubbleReversSorting(arr)));
+        System.out.println("Result: " + Arrays.toString(Sort.reverseSort(arr)));
     }
 
-//    @ParameterizedTest
-//    @MethodSource("prikhozhaev.Providers#testSort")
-    @Test
-    @DisplayName("Тест метода prikhozhaev.Sort.reverseSort(int[] arr)")
-    public void testReverseSort() {
-            Assert.assertArrayEquals(new Integer[]{22, 5, 4, -1, -3}, Sort.reverseSort(new Integer[]{-3, -1, 4, 5, 22}));
+    private static int[] bubbleReversSorting(int[] sortedArray) {
+        for (int i = 0; i < sortedArray.length; i++) {
+            for (int j = sortedArray.length - 1; j > i; j--) {
+                if (sortedArray[i] < sortedArray[j]) {
+                    int tmp = sortedArray[i];
+                    sortedArray[i] = sortedArray[j];
+                    sortedArray[j] = tmp;
+                }
+            }
+        }
+        return sortedArray;
     }
 }

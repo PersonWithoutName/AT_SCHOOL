@@ -1,32 +1,28 @@
 package prikhozhaev;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
+import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class MapTest {
-    private static Map map;
-
-    @BeforeAll
-    static void setMap() { map = new Map();}
-
-    public void testMap(){
+class MapTest {
+    static void testMap(String lastName, String firstName) {
+        testCountElementsInMap(lastName, firstName);
         testDeleteValueFromMap();
-        testCountElementsInMap();
     }
 
-    @Test
-    @DisplayName("Тест метода Map.countElementsInMap(String lastName, String firstName)")
-    public void testCountElementsInMap(){
-        assertEquals(1,map.countElementsInMap("Дмитрий","Дмитрий"));
+    private static void testCountElementsInMap(String lastName, String firstName) {
+        System.out.println(Map.countElementsInMap(lastName, firstName));
     }
 
-    @Test
-    @DisplayName("Тест метода Map.deleteValueFromMap(HashMap<String, String> map, String value)")
-    public void testDeleteValueFromMap(){
-
+    private static HashMap<String, String> testDeleteValueFromMap() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("Дмитров", "Алексей");
+        map.put("Ерохин", "Сергей ");
+        map.put("Ярмолов", "Алексей");
+        map.put("Карасев ", "Дмитрий");
+        map.put(" Ерохин", "Сергей");
+        map.put("Андреев ", "Андрей ");
+        map.put("Смирнов", "Владимир");
+        map.put("Ерохин ", "Сергей");
+        map.put("Андреев", "Андрей");
+        return Map.deleteValueFromMap(map, "Алексей");
     }
 }

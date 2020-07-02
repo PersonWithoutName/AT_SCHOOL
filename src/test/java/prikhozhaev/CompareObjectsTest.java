@@ -1,39 +1,24 @@
 package prikhozhaev;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 
-public class CompareObjectsTest {
+class CompareObjectsTest {
 
-    public void testCompareObjects(){
-        testCompare();
-//        testCompareHashCode();
-//        testCompareToString();
+    static void testCompareObjects(Object object1, Object object2) {
+        testCompare(object1, object2);
+        testCompareToString(object1, object2);
+        testCompareHashCode(object1, object2);
     }
 
-//    @ParameterizedTest
-//    @MethodSource("prikhozhaev.Providers#testCompareObjects")
-    @Test
-    @DisplayName("Тест метода prikhozhaev.compare(Object object1, Object object2)")
-    public void testCompare(){
-        Assert.assertEquals("test", "test");
+    private static void testCompare(Object object1, Object object2) {
+        System.out.println("CompareObjects.compare method test: " + CompareObjects.compare(object1, object2));
     }
 
-    @ParameterizedTest
-    @MethodSource("prikhozhaev.Providers#testCompareToString")
-    @DisplayName("Test of method prikhozhaev.compareToString(Object object1, Object object2)")
-    void testCompareToString(Object param, Object expected){
-        Assert.assertEquals(param, expected);
+    private static void testCompareToString(Object object1, Object object2) {
+        System.out.println("CompareObjects.compareToString method test: " + CompareObjects.compareToString(object1, object2));
     }
 
-    @ParameterizedTest
-    @MethodSource("prikhozhaev.Providers#testCompareHashCode")
-    @DisplayName("Test of method prikhozhaev.compareHashCode(Object object1, Object object2)")
-    void testCompareHashCode(Object param, Object expected){
-        Assert.assertEquals(param, expected);
+    private static void testCompareHashCode(Object object1, Object object2) {
+        System.out.println("CompareObjects.compareHashCode method test: " + CompareObjects.compareHashCode(object1, object2));
     }
 }
 
